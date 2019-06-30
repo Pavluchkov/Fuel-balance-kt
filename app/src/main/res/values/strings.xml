@@ -13,4 +13,15 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="string_previous">Предыдущие показания:</string>
+    <string name="string_current">Текущие показания:</string>
+    <string name="string_trassa">Трасса:</string>
+    <string name="string_frequent_technological">Частые технологические:</string>
+    <string name="string_time_of_the_year">Пора года:</string>
+    <string name="string_winter">Зима</string>
+    <string name="string_summer">Лето</string>
+    <string name="string_spent">Израсходовано:</string>
+    <string name="string_spent_result">TextView</string>
+    <string name="string_passed">Пройдено, км</string>
+    <string name="string_passed_result">TextView</string>
 </resources>
