@@ -32,7 +32,7 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
 
     override fun getSharedPref(): SharedPreferences {
         return getSharedPreferences(
-            getString(R.string.TAG_app_preference_file_settings),
+            getString(R.string.TAG_app_preference_file),
             Context.MODE_PRIVATE
         )
     }
@@ -83,8 +83,11 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
 
     override fun onStop() {
         mPresenter.saveUserData()
-        mPresenter.detachView()
         super.onStop()
     }
 
+    override fun onDestroy() {
+        mPresenter.detachView()
+        super.onDestroy()
+    }
 }

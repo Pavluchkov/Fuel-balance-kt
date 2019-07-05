@@ -1,6 +1,8 @@
 package by.pavluchkov.fuel_balance.views
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -8,6 +10,8 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import by.pavluchkov.fuel_balance.BuildConfig
@@ -15,26 +19,72 @@ import by.pavluchkov.fuel_balance.R
 import by.pavluchkov.fuel_balance.enums.TimeOfYear
 import by.pavluchkov.fuel_balance.interfaces.MainScreenView
 import by.pavluchkov.fuel_balance.presenters.MainScreenPresenter
+import by.pavluchkov.fuel_balance.utilites.MainData
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainScreenView {
+
     private val mPresenter = MainScreenPresenter()
 
-    override fun getTimeOfYear(): TimeOfYear {
-        return TimeOfYear.SUMMER
+    override fun setLoadUserData(previous: Int, timeOfYear: TimeOfYear) {
+        editText_previous_main.setText(
+            when (previous) {
+                0 -> ""
+                else -> previous.toString()
+            }
+        )
+
+        when (timeOfYear) {
+            TimeOfYear.SUMMER -> radioButton_summer_main.setChecked(true)
+            else -> radioButton_winter_main.setChecked(true)
+        }
     }
 
-    override fun getUserData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setResult(kmPassed: Int, result: Double) {
+        textView_passedResult_main.setText(kmPassed.toString())
+        textView_spentResult_main.setText(result.toString())
+    }
+
+    override fun getSharedPref(): SharedPreferences {
+        return getSharedPreferences(
+            getString(R.string.TAG_app_preference_file),
+            Context.MODE_PRIVATE
+        )
+    }
+
+    override fun getUserData(): MainData {
+        val previous = when (editText_previous_main.text.toString()) {
+            "" -> 0
+            else -> editText_previous_main.text.toString().toInt()
+        }
+
+        val current = when (editText_current_main.text.toString()) {
+            "" -> 0
+            else -> editText_current_main.text.toString().toInt()
+        }
+
+        val frequentTechnological = when (editText_frequent_technological_main.text.toString()) {
+            "" -> 0
+            else -> editText_frequent_technological_main.text.toString().toInt()
+        }
+
+        val trassa = when (editText_trassa_main.text.toString()) {
+            "" -> 0
+            else -> editText_trassa_main.text.toString().toInt()
+        }
+
+        val timeOfYear = when (radioButton_summer_main.isChecked) {
+            true -> TimeOfYear.SUMMER
+            else -> TimeOfYear.WINTER
+        }
+
+        return MainData(previous, current, frequentTechnological, trassa, timeOfYear)
     }
 
     override fun showMessage(resId: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun showResult(result: Double) {
-        textView_spentResult.text = result.toString()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +109,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navView.setNavigationItemSelectedListener(this)
 
-        textView_currentVersion.text = BuildConfig.VERSION_NAME
+        textView_currentVersion_main.text = BuildConfig.VERSION_NAME
 
         mPresenter.attachView(this)
+        mPresenter.loadPreviousData()
+
+        editText_previous_main.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                mPresenter.raschet()
+            }
+
+        })
 
     }
 
@@ -119,5 +185,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onStop() {
+        mPresenter.saveUserData()
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        mPresenter.detachView()
+        super.onDestroy()
     }
 }

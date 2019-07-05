@@ -25,11 +25,18 @@
     <string name="string_passed">Пройдено, км</string>
     <string name="string_passed_result">TextView</string>
 
-    <string name="TAG_app_preference_file_settings">by.pavluchkov.fuel_balance.PREFERENCE_FILE_SETTINGS</string>
+    <string name="TAG_app_preference_file">by.pavluchkov.fuel_balance.PREFERENCE_FILE_SETTINGS</string>
     <string name="TAG_fuel_norma_summer">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_SUMMER</string>
     <string name="TAG_fuel_norma_winter">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_WINTER</string>
-    <string name="TAG_frequent_technological">by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL</string>
-    <string name="TAG_trassa">by.pavluchkov.fuel_balance.TRASSA</string>
+    <string name="TAG_frequent_technological_settings">by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_SETTINGS
+    </string>
+    <string name="TAG_trassa_settings">by.pavluchkov.fuel_balance.TRASSA_SETTINGS</string>
+    <string name="TAG_previous_main">by.pavluchkov.fuel_balance.PREVIOUS_MAIN</string>
+    <string name="TAG_current_main">by.pavluchkov.fuel_balance.CURRENT_MAIN</string>
+    <string name="TAG_frequent_technological_main">by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_MAIN</string>
+    <string name="TAG_trassa_main">by.pavluchkov.fuel_balance.TRASSA_MAIN</string>
+    <string name="TAG_time_of_year">by.pavluchkov.fuel_balance.TIMEOFYEAR</string>
+
     <string name="string_fuel_norma">Норма топлива, л:</string>
     <string name="string_hint_summer">Летняя</string>
     <string name="string_hint_winter">Зимняя</string>

@@ -28,8 +28,8 @@ class SettingsScreenPresenter {
         with(sharedPref.edit()) {
             putFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), summerNorma)
             putFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), winterNorma)
-            putInt(getStringFromRes(R.string.TAG_frequent_technological), frequencyTechnology)
-            putInt(getStringFromRes(R.string.TAG_trassa), trassa)
+            putInt(getStringFromRes(R.string.TAG_frequent_technological_settings), frequencyTechnology)
+            putInt(getStringFromRes(R.string.TAG_trassa_settings), trassa)
             apply()
         }
     }
@@ -39,8 +39,8 @@ class SettingsScreenPresenter {
 
         val summerNorma = sharedPref.getFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), 0f)
         val winterNorma = sharedPref.getFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), 0f)
-        val frequencyTechnology = sharedPref.getInt(getStringFromRes(R.string.TAG_frequent_technological), 0)
-        val trassa = sharedPref.getInt(getStringFromRes(R.string.TAG_trassa), 0)
+        val frequencyTechnology = sharedPref.getInt(getStringFromRes(R.string.TAG_frequent_technological_settings), 0)
+        val trassa = sharedPref.getInt(getStringFromRes(R.string.TAG_trassa_settings), 0)
 
         mSettingsView?.setLoadData(SettingsData(summerNorma, winterNorma, frequencyTechnology, trassa))
 

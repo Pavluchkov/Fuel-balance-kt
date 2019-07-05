@@ -8,4 +8,8 @@ data class MainData(
     val frequentTechnological: Int,
     val trassa: Int,
     val timeOfYear: TimeOfYear
+//    val summerNormaSettings: Float,
+//    val winterNormaSettings: Float,
+//    val frequentTechnologicalSettings: Int,
+//    val trassaSettings: Int
 )

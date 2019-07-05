@@ -10,7 +10,7 @@
         tools:context=".views.MainActivity">
 
     <TextView
-            android:id="@+id/textView_previous"
+            android:id="@+id/textView_previous_main"
             android:text="@string/string_previous"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"/>
     <TextView
-            android:id="@+id/textView_current"
+            android:id="@+id/textView_current_main"
             android:text="@string/string_current"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintTop_toTopOf="@+id/guideline_15_procent"/>
     <TextView
-            android:id="@+id/textView_trassa"
+            android:id="@+id/textView_trassa_main"
             android:text="@string/string_trassa"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintTop_toTopOf="@+id/guideline_35_procent"/>
     <TextView
-            android:id="@+id/textView_frequent_technological"
+            android:id="@+id/textView_frequent_technological_main"
             android:text="@string/string_frequent_technological"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintTop_toTopOf="@+id/guideline_25_procent"/>
     <EditText
-            android:id="@+id/editText_previous"
+            android:id="@+id/editText_previous_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -72,10 +72,10 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_previous" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="@+id/textView_previous"/>
+            app:layout_constraintBottom_toBottomOf="@+id/textView_previous_main" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/textView_previous_main"/>
     <EditText
-            android:id="@+id/editText_current"
+            android:id="@+id/editText_current_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -85,10 +85,10 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_current"
-            app:layout_constraintTop_toTopOf="@+id/textView_current"/>
+            app:layout_constraintBottom_toBottomOf="@+id/textView_current_main"
+            app:layout_constraintTop_toTopOf="@+id/textView_current_main"/>
     <EditText
-            android:id="@+id/editText_frequent_technological"
+            android:id="@+id/editText_frequent_technological_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -98,10 +98,10 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_frequent_technological"
-            app:layout_constraintTop_toTopOf="@+id/textView_frequent_technological"/>
+            app:layout_constraintBottom_toBottomOf="@+id/textView_frequent_technological_main"
+            app:layout_constraintTop_toTopOf="@+id/textView_frequent_technological_main"/>
     <EditText
-            android:id="@+id/editText_trassa"
+            android:id="@+id/editText_trassa_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -111,8 +111,8 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_trassa"
-            app:layout_constraintTop_toTopOf="@+id/textView_trassa"/>
+            app:layout_constraintBottom_toBottomOf="@+id/textView_trassa_main"
+            app:layout_constraintTop_toTopOf="@+id/textView_trassa_main"/>
     <android.support.constraint.Guideline
             android:id="@+id/guideline_5_procent"
             android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5"/>
     <TextView
-            android:id="@+id/textView_timeOfTheYear"
+            android:id="@+id/textView_timeOfTheYear_main"
             android:text="@string/string_time_of_the_year"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintTop_toTopOf="@+id/guideline_45_procent"/>
     <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/radioGroup_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -148,10 +148,10 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_timeOfTheYear"
-            app:layout_constraintTop_toTopOf="@+id/textView_timeOfTheYear">
+            app:layout_constraintBottom_toBottomOf="@+id/textView_timeOfTheYear_main"
+            app:layout_constraintTop_toTopOf="@+id/textView_timeOfTheYear_main">
         <RadioButton
-                android:id="@+id/radioButton_winter"
+                android:id="@+id/radioButton_winter_main"
                 android:text="@string/string_winter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                 android:checked="true"
                 android:textColor="@color/colorMainText"/>
         <RadioButton
-                android:id="@+id/radioButton_summer"
+                android:id="@+id/radioButton_summer_main"
                 android:text="@string/string_summer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                 android:textColor="@color/colorMainText"/>
     </RadioGroup>
     <TextView
-            android:id="@+id/textView_passed"
+            android:id="@+id/textView_passed_main"
             android:text="@string/string_passed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -180,7 +180,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintTop_toTopOf="@+id/guideline_55_procent"/>
     <TextView
-            android:id="@+id/textView_passedResult"
+            android:id="@+id/textView_passedResult_main"
             android:text="@string/string_passed_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -191,10 +191,10 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_passed"
-            app:layout_constraintTop_toTopOf="@+id/textView_passed"/>
+            app:layout_constraintBottom_toBottomOf="@+id/textView_passed_main"
+            app:layout_constraintTop_toTopOf="@+id/textView_passed_main"/>
     <TextView
-            android:id="@+id/textView_spent"
+            android:id="@+id/textView_spent_main"
             android:text="@string/string_spent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -206,9 +206,9 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/textView_passed"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView_passed_main"/>
     <TextView
-            android:id="@+id/textView_spentResult"
+            android:id="@+id/textView_spentResult_main"
             android:text="@string/string_spent_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -220,10 +220,10 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_spent"
-            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintTop_toTopOf="@+id/textView_spent"/>
+            app:layout_constraintBottom_toBottomOf="@+id/textView_spent_main"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintTop_toTopOf="@+id/textView_spent_main"/>
     <TextView
-            android:id="@+id/textView_currentVersion"
+            android:id="@+id/textView_currentVersion_main"
             tools:text="v.1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
