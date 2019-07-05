@@ -1,4 +1,4 @@
-package by.pavluchkov.fuel_balance.activitys
+package by.pavluchkov.fuel_balance.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,18 +10,31 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import by.pavluchkov.fuel_balance.BuildConfig
 import by.pavluchkov.fuel_balance.R
-import by.pavluchkov.fuel_balance.interfaces.MyView
+import by.pavluchkov.fuel_balance.enums.TimeOfYear
+import by.pavluchkov.fuel_balance.interfaces.MainScreenView
+import by.pavluchkov.fuel_balance.presenters.MainScreenPresenter
+import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MyView {
-    override fun showResult() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainScreenView {
+    private val mPresenter = MainScreenPresenter()
+
+    override fun getTimeOfYear(): TimeOfYear {
+        return TimeOfYear.SUMMER
+    }
+
+    override fun getUserData() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun payment(value: Any): Double {
+    override fun showMessage(resId: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun showResult(result: Double) {
+        textView_spentResult.text = result.toString()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +58,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+
+        textView_currentVersion.text = BuildConfig.VERSION_NAME
+
+        mPresenter.attachView(this)
+
     }
 
     override fun onBackPressed() {

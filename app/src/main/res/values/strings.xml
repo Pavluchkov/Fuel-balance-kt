@@ -2,8 +2,8 @@
     <string name="app_name">Fuel-balance</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Fuel-balance</string>
+    <string name="nav_header_subtitle">pavluchkov1501@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Настройки</string>
 
@@ -16,7 +16,7 @@
     <string name="string_previous">Предыдущие показания:</string>
     <string name="string_current">Текущие показания:</string>
     <string name="string_trassa">Трасса:</string>
-    <string name="string_frequent_technological">Частые технологические:</string>
+    <string name="string_frequent_technological">Частые технологические остановки:</string>
     <string name="string_time_of_the_year">Пора года:</string>
     <string name="string_winter">Зима</string>
     <string name="string_summer">Лето</string>
@@ -24,4 +24,16 @@
     <string name="string_spent_result">TextView</string>
     <string name="string_passed">Пройдено, км</string>
     <string name="string_passed_result">TextView</string>
+
+    <string name="TAG_app_preference_file_settings">by.pavluchkov.fuel_balance.PREFERENCE_FILE_SETTINGS</string>
+    <string name="TAG_fuel_norma_summer">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_SUMMER</string>
+    <string name="TAG_fuel_norma_winter">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_WINTER</string>
+    <string name="TAG_frequent_technological">by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL</string>
+    <string name="TAG_trassa">by.pavluchkov.fuel_balance.TRASSA</string>
+    <string name="string_fuel_norma">Норма топлива, л:</string>
+    <string name="string_hint_summer">Летняя</string>
+    <string name="string_hint_winter">Зимняя</string>
+    <string name="string_frequent_technological_settings">Частые технологические (% от нормы):</string>
+    <string name="string_trassa_settings">Трасса (% от нормы):</string>
+
 </resources>
