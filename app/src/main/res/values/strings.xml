@@ -21,7 +21,7 @@
     <string name="string_winter">Зима</string>
     <string name="string_summer">Лето</string>
     <string name="string_spent">Израсходовано:</string>
-    <string name="string_spent_result">0</string>
+    <string name="string_spent_result">0.0</string>
     <string name="string_passed">Пройдено, км</string>
     <string name="string_passed_result">0</string>
 
