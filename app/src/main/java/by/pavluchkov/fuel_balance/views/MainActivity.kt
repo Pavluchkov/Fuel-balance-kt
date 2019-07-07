@@ -1,8 +1,6 @@
 package by.pavluchkov.fuel_balance.views
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -14,6 +12,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 import by.pavluchkov.fuel_balance.BuildConfig
 import by.pavluchkov.fuel_balance.R
 import by.pavluchkov.fuel_balance.enums.TimeOfYear
@@ -40,16 +39,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun setResult(kmPassed: Int, result: Double) {
+    override fun setResult(kmPassed: Int, result: Float) {
         textView_passedResult_main.setText(kmPassed.toString())
         textView_spentResult_main.setText(result.toString())
-    }
-
-    override fun getSharedPref(): SharedPreferences {
-        return getSharedPreferences(
-            getString(R.string.TAG_app_preference_file),
-            Context.MODE_PRIVATE
-        )
     }
 
     override fun getUserData(): MainData {
@@ -114,20 +106,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mPresenter.attachView(this)
         mPresenter.loadPreviousData()
 
-        editText_previous_main.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
+        setEditTextListener(editText_previous_main)
+        setEditTextListener(editText_current_main)
+        setEditTextListener(editText_frequent_technological_main)
+        setEditTextListener(editText_trassa_main)
 
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                mPresenter.raschet()
-            }
-
-        })
+        radioGroup_main.setOnCheckedChangeListener { group, checkedId -> mPresenter.getResult() }
 
     }
 
@@ -195,5 +179,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onDestroy() {
         mPresenter.detachView()
         super.onDestroy()
+    }
+
+    private fun setEditTextListener(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                mPresenter.getResult()
+            }
+
+        })
     }
 }

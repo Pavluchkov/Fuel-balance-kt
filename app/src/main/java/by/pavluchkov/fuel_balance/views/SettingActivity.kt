@@ -1,7 +1,5 @@
 package by.pavluchkov.fuel_balance.views
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import by.pavluchkov.fuel_balance.R
@@ -30,13 +28,6 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
         editText_trassa_settings.setText(data.trassa.toString())
     }
 
-    override fun getSharedPref(): SharedPreferences {
-        return getSharedPreferences(
-            getString(R.string.TAG_app_preference_file),
-            Context.MODE_PRIVATE
-        )
-    }
-
     override fun getUserData(): SettingsData {
         val summerNorma = when (editText_summer_norma_settings.text.toString()) {
             "" -> 0f
@@ -49,12 +40,12 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
         }
 
         val frequentTechnological = when (editText_frequent_technological_settings.text.toString()) {
-            "" -> 0
+            "" -> getString(R.string.string_frequentTechnological_settings_default_value).toInt()
             else -> editText_frequent_technological_settings.text.toString().toInt()
         }
 
         val trassa = when (editText_trassa_settings.text.toString()) {
-            "" -> 0
+            "" -> getString(R.string.string_trassa_settings_default_value).toInt()
             else -> editText_trassa_settings.text.toString().toInt()
         }
 

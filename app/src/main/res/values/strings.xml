@@ -17,13 +17,13 @@
     <string name="string_current">Текущие показания:</string>
     <string name="string_trassa">Трасса:</string>
     <string name="string_frequent_technological">Частые технологические остановки:</string>
-    <string name="string_time_of_the_year">Пора года:</string>
+    <string name="string_time_of_the_year">Норма:</string>
     <string name="string_winter">Зима</string>
     <string name="string_summer">Лето</string>
     <string name="string_spent">Израсходовано:</string>
-    <string name="string_spent_result">TextView</string>
+    <string name="string_spent_result">0</string>
     <string name="string_passed">Пройдено, км</string>
-    <string name="string_passed_result">TextView</string>
+    <string name="string_passed_result">0</string>
 
     <string name="TAG_app_preference_file">by.pavluchkov.fuel_balance.PREFERENCE_FILE_SETTINGS</string>
     <string name="TAG_fuel_norma_summer">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_SUMMER</string>
@@ -42,5 +42,9 @@
     <string name="string_hint_winter">Зимняя</string>
     <string name="string_frequent_technological_settings">Частые технологические (% от нормы):</string>
     <string name="string_trassa_settings">Трасса (% от нормы):</string>
+
+    <!--default value-->
+    <string name="string_frequentTechnological_settings_default_value">10</string>
+    <string name="string_trassa_settings_default_value">3</string>
 
 </resources>

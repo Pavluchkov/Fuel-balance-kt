@@ -1,12 +1,11 @@
 package by.pavluchkov.fuel_balance.presenters
 
-import by.pavluchkov.fuel_balance.App
-import by.pavluchkov.fuel_balance.R
 import by.pavluchkov.fuel_balance.interfaces.SettingsScreenView
-import by.pavluchkov.fuel_balance.utilites.SettingsData
+import by.pavluchkov.fuel_balance.model.ModelFactory
 
 class SettingsScreenPresenter {
     private var mSettingsView: SettingsScreenView? = null
+    private val mModel = ModelFactory.getModel()
 
     fun attachView(view: SettingsScreenView) {
         mSettingsView = view
@@ -18,35 +17,11 @@ class SettingsScreenPresenter {
 
     fun saveUserData() {
         val userData = mSettingsView?.getUserData() ?: return
-
-        val summerNorma = userData.summerNorma
-        val winterNorma = userData.winterNorma
-        val frequencyTechnology = userData.frequentTechnological
-        val trassa = userData.trassa
-
-        val sharedPref = mSettingsView?.getSharedPref() ?: return
-        with(sharedPref.edit()) {
-            putFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), summerNorma)
-            putFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), winterNorma)
-            putInt(getStringFromRes(R.string.TAG_frequent_technological_settings), frequencyTechnology)
-            putInt(getStringFromRes(R.string.TAG_trassa_settings), trassa)
-            apply()
-        }
+        mModel.saveData(userData)
     }
 
     fun loadUserData() {
-        val sharedPref = mSettingsView?.getSharedPref() ?: return
-
-        val summerNorma = sharedPref.getFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), 0f)
-        val winterNorma = sharedPref.getFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), 0f)
-        val frequencyTechnology = sharedPref.getInt(getStringFromRes(R.string.TAG_frequent_technological_settings), 0)
-        val trassa = sharedPref.getInt(getStringFromRes(R.string.TAG_trassa_settings), 0)
-
-        mSettingsView?.setLoadData(SettingsData(summerNorma, winterNorma, frequencyTechnology, trassa))
-
+        mSettingsView?.setLoadData(mModel.loadSettingsData())
     }
 
-    private fun getStringFromRes(resId: Int): String? {
-        return App.getRes()?.getString(resId)
-    }
 }

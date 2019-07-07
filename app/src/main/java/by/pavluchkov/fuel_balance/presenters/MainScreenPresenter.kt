@@ -1,12 +1,13 @@
 package by.pavluchkov.fuel_balance.presenters
 
-import by.pavluchkov.fuel_balance.App
-import by.pavluchkov.fuel_balance.R
 import by.pavluchkov.fuel_balance.enums.TimeOfYear
 import by.pavluchkov.fuel_balance.interfaces.MainScreenView
+import by.pavluchkov.fuel_balance.model.ModelFactory
+import kotlin.math.roundToInt
 
 class MainScreenPresenter {
     private var mMainScreenView: MainScreenView? = null
+    private val mModel = ModelFactory.getModel()
 
     fun attachView(view: MainScreenView) {
         mMainScreenView = view
@@ -18,54 +19,41 @@ class MainScreenPresenter {
 
     fun saveUserData() {
         val userData = mMainScreenView?.getUserData() ?: return
-
-        val previous = userData.current
-        val timeOfYear = userData.timeOfYear
-
-        val sharedPref = mMainScreenView?.getSharedPref() ?: return
-        with(sharedPref.edit()) {
-            putInt(getStringFromRes(R.string.TAG_previous_main), previous)
-            putInt(getStringFromRes(R.string.TAG_time_of_year), timeOfYear.ordinal)
-            apply()
-        }
+        mModel.saveData(userData)
     }
 
     fun loadPreviousData() {
-        val sharedPref = mMainScreenView?.getSharedPref() ?: return
-
-//        val summerNorma = sharedPref.getFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), 0f)
-//        val winterNorma = sharedPref.getFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), 0f)
-//        val frequencyTechnology = sharedPref.getInt(getStringFromRes(R.string.TAG_frequent_technological), 0)
-//        val trassa = sharedPref.getInt(getStringFromRes(R.string.TAG_trassa), 0)
-
-        val previous = sharedPref.getInt(getStringFromRes(R.string.TAG_previous_main), 0)
-        val timeOfYearOrdinal = sharedPref.getInt(getStringFromRes(R.string.TAG_time_of_year), 0)
-        val timeOfYear = when (timeOfYearOrdinal) {
-            TimeOfYear.SUMMER.ordinal -> TimeOfYear.SUMMER
-            else -> TimeOfYear.WINTER
-        }
-
-        mMainScreenView?.setLoadUserData(previous, timeOfYear)
+        val mainData = mModel.loadMainData()
+        mMainScreenView?.setLoadUserData(mainData.current, mainData.timeOfYear)
     }
 
     fun getResult() {
+        val userData = mMainScreenView?.getUserData() ?: return
+        val settingsData = mModel.loadSettingsData()
+
+        if (userData.current < userData.previous) {
+            mMainScreenView?.setResult(0, 0f)
+            return
+        }
+
+        val kmPassed = userData.current - userData.previous
+
+        val currentNorma = when (userData.timeOfYear) {
+            TimeOfYear.SUMMER -> settingsData.summerNorma
+            else -> settingsData.winterNorma
+        }
+
+        val freqTechNorma = currentNorma + (settingsData.frequentTechnological * currentNorma / 100)
+        val trassaNorma = currentNorma - (settingsData.trassa * currentNorma / 100)
+
+        val spentFreqTech = userData.frequentTechnological * freqTechNorma / 100
+        val spentTrassa = userData.trassa * trassaNorma / 100
+
+        val result =
+            ((kmPassed - userData.frequentTechnological - userData.trassa) * currentNorma / 100) + spentFreqTech + spentTrassa
+
+        mMainScreenView?.setResult(kmPassed, (result * 1000).roundToInt() / 1000.toFloat())
 
     }
 
-    fun raschet() {
-        val userData = mMainScreenView?.getUserData()
-//        println(
-//            """
-//            previous: ${userData?.previous}
-//            current: ${userData?.current}
-//            freq: ${userData?.frequentTechnological}
-//            trassa: ${userData?.trassa}
-//            timeOfYear: ${userData?.timeOfYear}
-//        """.trimIndent()
-//        )
-    }
-
-    private fun getStringFromRes(resId: Int): String? {
-        return App.getRes()?.getString(resId)
-    }
 }
