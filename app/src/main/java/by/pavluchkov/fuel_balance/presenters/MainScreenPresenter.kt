@@ -3,6 +3,9 @@ package by.pavluchkov.fuel_balance.presenters
 import by.pavluchkov.fuel_balance.enums.TimeOfYear
 import by.pavluchkov.fuel_balance.interfaces.MainScreenView
 import by.pavluchkov.fuel_balance.model.ModelFactory
+import by.pavluchkov.fuel_balance.utilites.MainData
+import by.pavluchkov.fuel_balance.utilites.Result
+import by.pavluchkov.fuel_balance.utilites.SettingsData
 import kotlin.math.roundToInt
 
 class MainScreenPresenter {
@@ -17,28 +20,41 @@ class MainScreenPresenter {
         mMainScreenView = null
     }
 
-    fun saveUserData() {
-        val userData = mMainScreenView?.getUserData() ?: return
-        mModel.saveData(userData)
+    fun saveUserData(mainScreenData: MainData) {
+
+        if (mainScreenData.current < mainScreenData.previous) mainScreenData.current = mainScreenData.previous
+
+        mModel.saveData(mainScreenData)
     }
 
-    fun loadPreviousData() {
-        val mainData = mModel.loadMainData()
-        mMainScreenView?.setLoadUserData(mainData.current, mainData.timeOfYear)
+    fun loadMainScreenData(): MainData {
+        return mModel.loadMainData()
     }
 
-    fun getResult() {
-        val userData = mMainScreenView?.getUserData() ?: return
-        val settingsData = mModel.loadSettingsData()
+    fun loadSettingsData(): SettingsData {
+        return mModel.loadSettingsData()
+    }
 
-        if (userData.current < userData.previous) {
-            mMainScreenView?.setResult(0, 0f)
-            return
+    fun checkValue(mainScreenData: MainData): Boolean {
+        val kmPassed = mainScreenData.current - mainScreenData.previous
+        val freqPlusTrassa = mainScreenData.frequentTechnological + mainScreenData.trassa
+
+        if ((freqPlusTrassa > kmPassed) && (kmPassed > 0)) {
+            return false
         }
 
-        val kmPassed = userData.current - userData.previous
+        return true
+    }
 
-        val currentNorma = when (userData.timeOfYear) {
+    fun getResult(mainScreenData: MainData, settingsData: SettingsData): Result {
+
+        val kmPassed = mainScreenData.current - mainScreenData.previous
+
+        if (mainScreenData.current < mainScreenData.previous) {
+            return Result(0, 0f)
+        }
+
+        val currentNorma = when (mainScreenData.timeOfYear) {
             TimeOfYear.SUMMER -> settingsData.summerNorma
             else -> settingsData.winterNorma
         }
@@ -46,13 +62,15 @@ class MainScreenPresenter {
         val freqTechNorma = currentNorma + (settingsData.frequentTechnological * currentNorma / 100)
         val trassaNorma = currentNorma - (settingsData.trassa * currentNorma / 100)
 
-        val spentFreqTech = userData.frequentTechnological * freqTechNorma / 100
-        val spentTrassa = userData.trassa * trassaNorma / 100
+        val spentFreqTech = mainScreenData.frequentTechnological * freqTechNorma / 100
+        val spentTrassa = mainScreenData.trassa * trassaNorma / 100
 
         val result =
-            ((kmPassed - userData.frequentTechnological - userData.trassa) * currentNorma / 100) + spentFreqTech + spentTrassa
+            ((kmPassed - mainScreenData.frequentTechnological - mainScreenData.trassa) * currentNorma / 100) + spentFreqTech + spentTrassa
 
-        mMainScreenView?.setResult(kmPassed, (result * 1000).roundToInt() / 1000.toFloat())
+        val roundResult = (result * 1000).roundToInt() / 1000.toFloat()
+
+        return Result(kmPassed, roundResult)
 
     }
 

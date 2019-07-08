@@ -1,8 +1,11 @@
 package by.pavluchkov.fuel_balance.views
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -19,29 +22,27 @@ import by.pavluchkov.fuel_balance.enums.TimeOfYear
 import by.pavluchkov.fuel_balance.interfaces.MainScreenView
 import by.pavluchkov.fuel_balance.presenters.MainScreenPresenter
 import by.pavluchkov.fuel_balance.utilites.MainData
+import by.pavluchkov.fuel_balance.utilites.Result
 import kotlinx.android.synthetic.main.content_main.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainScreenView {
 
     private val mPresenter = MainScreenPresenter()
 
-    override fun setLoadUserData(previous: Int, timeOfYear: TimeOfYear) {
-        editText_previous_main.setText(
-            when (previous) {
-                0 -> ""
-                else -> previous.toString()
-            }
-        )
+    override fun setLoadUserData(data: MainData) {
+        editText_previous_main.setText(data.current.toString())
 
-        when (timeOfYear) {
+        when (data.timeOfYear) {
             TimeOfYear.SUMMER -> radioButton_summer_main.setChecked(true)
             else -> radioButton_winter_main.setChecked(true)
         }
     }
 
-    override fun setResult(kmPassed: Int, result: Float) {
-        textView_passedResult_main.setText(kmPassed.toString())
-        textView_spentResult_main.setText(result.toString())
+    override fun setResult(result: Result) {
+        textView_passedResult_main.setText(result.kmPass.toString())
+        textView_spentResult_main.setText(result.result.toString())
     }
 
     override fun getUserData(): MainData {
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun showMessage(resId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Snackbar.make(main_layout, getString(resId), Snackbar.LENGTH_LONG).show()
     }
 
 
@@ -104,14 +105,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         textView_currentVersion_main.text = BuildConfig.VERSION_NAME
 
         mPresenter.attachView(this)
-        mPresenter.loadPreviousData()
+        setLoadUserData(mPresenter.loadMainScreenData())
 
         setEditTextListener(editText_previous_main)
         setEditTextListener(editText_current_main)
         setEditTextListener(editText_frequent_technological_main)
         setEditTextListener(editText_trassa_main)
 
-        radioGroup_main.setOnCheckedChangeListener { group, checkedId -> mPresenter.getResult() }
+        radioGroup_main.setOnCheckedChangeListener { _, _ ->
+            setResult(
+                mPresenter.getResult(
+                    getUserData(),
+                    mPresenter.loadSettingsData()
+                )
+            )
+        }
 
     }
 
@@ -147,17 +155,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
+//            R.id.nav_home -> {
+//                // Handle the camera action
+//            }
+//            R.id.nav_gallery -> {
+//
+//            }
+//            R.id.nav_slideshow -> {
+//
+//            }
             R.id.nav_tools -> {
-
+                val settingIntent = Intent(this, SettingActivity::class.java)
+                startActivity(settingIntent)
             }
             R.id.nav_share -> {
 
@@ -172,7 +181,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onStop() {
-        mPresenter.saveUserData()
+        mPresenter.saveUserData(getUserData())
         super.onStop()
     }
 
@@ -192,7 +201,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                mPresenter.getResult()
+
+                if (!mPresenter.checkValue(getUserData())) {
+                    showMessage(R.string.string_message_1)
+
+                    val editTextValue = editText.text.toString().dropLast(1)
+                    editText.setText(editTextValue)
+                    editText.setSelection(editTextValue.length)
+                    editText.setBackgroundColor(Color.RED)
+                    Timer().schedule(200) {
+                        editText.setBackgroundColor(ContextCompat.getColor(editText.context, R.color.colorBackground))
+                    }
+                }
+                setResult(mPresenter.getResult(getUserData(), mPresenter.loadSettingsData()))
             }
 
         })

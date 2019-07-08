@@ -2,6 +2,7 @@ package by.pavluchkov.fuel_balance.presenters
 
 import by.pavluchkov.fuel_balance.interfaces.SettingsScreenView
 import by.pavluchkov.fuel_balance.model.ModelFactory
+import by.pavluchkov.fuel_balance.utilites.SettingsData
 
 class SettingsScreenPresenter {
     private var mSettingsView: SettingsScreenView? = null
@@ -15,13 +16,12 @@ class SettingsScreenPresenter {
         mSettingsView = null
     }
 
-    fun saveUserData() {
-        val userData = mSettingsView?.getUserData() ?: return
+    fun saveUserData(userData: SettingsData) {
         mModel.saveData(userData)
     }
 
-    fun loadUserData() {
-        mSettingsView?.setLoadData(mModel.loadSettingsData())
+    fun loadUserData(): SettingsData {
+        return mModel.loadSettingsData()
     }
 
 }

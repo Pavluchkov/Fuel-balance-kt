@@ -3,11 +3,11 @@ package by.pavluchkov.fuel_balance.utilites
 import by.pavluchkov.fuel_balance.enums.TimeOfYear
 
 data class MainData(
-    val previous: Int,
-    val current: Int,
-    val frequentTechnological: Int,
-    val trassa: Int,
-    val timeOfYear: TimeOfYear
+    var previous: Int,
+    var current: Int,
+    var frequentTechnological: Int,
+    var trassa: Int,
+    var timeOfYear: TimeOfYear
 //    val summerNormaSettings: Float,
 //    val winterNormaSettings: Float,
 //    val frequentTechnologicalSettings: Int,

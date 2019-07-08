@@ -64,7 +64,7 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         mPresenter.attachView(this)
-        mPresenter.loadUserData()
+        setLoadData(mPresenter.loadUserData())
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -73,7 +73,7 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
     }
 
     override fun onStop() {
-        mPresenter.saveUserData()
+        mPresenter.saveUserData(getUserData())
         super.onStop()
     }
 
