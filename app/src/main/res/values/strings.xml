@@ -56,4 +56,10 @@
     <string name="string_message_1">Слишком большое значение !</string>
     <string name="menu_gallery">Галерея</string>
     <string name="menu_home">Дом</string>
+    <string name="email_app_address" translatable="false">pavluchkov1501@gmail.com</string>
+    <string name="email_app_subject">Обратная связь</string>
+    <string name="email_app_chooserTitle">Выберите приложение</string>
+    <string name="email_send_error">Нет подходящего приложения</string>
+    <string name="string_share_app_chooser_title">Поделиться</string>
+    <string name="string_share_app_message">Разрешите поделиться с вами этим приложением:</string>
 </resources>

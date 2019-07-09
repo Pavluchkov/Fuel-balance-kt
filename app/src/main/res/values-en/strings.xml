@@ -22,4 +22,9 @@
     <string name="string_trassa">Trassa:</string>
     <string name="string_trassa_settings">Trassa (% norm):</string>
     <string name="string_winter">Winter</string>
+    <string name="email_app_chooserTitle">Choose app</string>
+    <string name="email_app_subject">Feedback</string>
+    <string name="email_send_error">Choose error</string>
+    <string name="string_share_app_chooser_title">Share</string>
+    <string name="string_share_app_message">Let me share with you this application:</string>
 </resources>

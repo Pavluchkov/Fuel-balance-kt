@@ -2,6 +2,7 @@ package by.pavluchkov.fuel_balance.views
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -35,14 +36,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         editText_previous_main.setText(data.current.toString())
 
         when (data.timeOfYear) {
-            TimeOfYear.SUMMER -> radioButton_summer_main.setChecked(true)
-            else -> radioButton_winter_main.setChecked(true)
+            TimeOfYear.SUMMER -> radioButton_summer_main.isChecked = true
+            else -> radioButton_winter_main.isChecked = true
         }
     }
 
     override fun setResult(result: Result) {
-        textView_passedResult_main.setText(result.kmPass.toString())
-        textView_spentResult_main.setText(result.result.toString())
+        textView_passedResult_main.text = result.kmPass.toString()
+        textView_spentResult_main.text = result.result.toString()
     }
 
     override fun getUserData(): MainData {
@@ -169,9 +170,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(settingIntent)
             }
             R.id.nav_share -> {
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
+                var shareMessage = "\n" + getString(R.string.string_share_app_message) + "\n\n"
+                shareMessage =
+                    shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+                startActivity(Intent.createChooser(shareIntent, getString(R.string.string_share_app_chooser_title)))
 
             }
             R.id.nav_send -> {
+                val intent = Intent(Intent.ACTION_SENDTO)
+                //intent.setType("message/rfc822");
+                intent.data = Uri.parse("mailto:" + getString(R.string.email_app_address))
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_app_subject))
+                startActivity(Intent.createChooser(intent, getString(R.string.email_app_chooserTitle)))
 
             }
         }
