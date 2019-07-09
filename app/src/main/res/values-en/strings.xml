@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fuel-balance</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_tools">Settings</string>
+    <string name="string_current">Current value</string>
+    <string name="string_frequent_technological">Frequent technological stops</string>
+    <string name="string_frequent_technological_settings">Frequent technological (% norm):</string>
+    <string name="string_fuel_norma">Fuel norma, l</string>
+    <string name="string_hint_summer">Summer</string>
+    <string name="string_hint_winter">Winter</string>
+    <string name="string_message_1">Value is very big</string>
+    <string name="string_passed">Pass, km</string>
+    <string name="string_previous">Previous value</string>
+    <string name="string_spent">Spent</string>
+    <string name="string_summer">Summer</string>
+    <string name="string_time_of_the_year">Norm:</string>
+    <string name="string_trassa">Trassa:</string>
+    <string name="string_trassa_settings">Trassa (% norm):</string>
+    <string name="string_winter">Winter</string>
+</resources>

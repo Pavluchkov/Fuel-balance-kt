@@ -52,10 +52,6 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
         return SettingsData(summerNorma, winterNorma, frequentTechnological, trassa)
     }
 
-    override fun showMessage(resId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)

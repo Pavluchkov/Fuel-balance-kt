@@ -1,18 +1,16 @@
 <resources>
     <string name="app_name">Fuel-balance</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Fuel-balance</string>
-    <string name="nav_header_subtitle">pavluchkov1501@gmail.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Fuel-balance</string>
+    <string name="nav_header_subtitle" translatable="false">pavluchkov1501@gmail.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Настройки</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
+    <string name="menu_tools">Настройки</string>
+    <string name="menu_share">Поделиться</string>
+    <string name="menu_send">Написать разработчику</string>
     <string name="string_previous">Предыдущие показания:</string>
     <string name="string_current">Текущие показания:</string>
     <string name="string_trassa">Трасса:</string>
@@ -21,21 +19,27 @@
     <string name="string_winter">Зима</string>
     <string name="string_summer">Лето</string>
     <string name="string_spent">Израсходовано:</string>
-    <string name="string_spent_result">0.0</string>
+    <string name="string_spent_result" translatable="false">0.0</string>
     <string name="string_passed">Пройдено, км</string>
-    <string name="string_passed_result">0</string>
+    <string name="string_passed_result" translatable="false">0</string>
 
-    <string name="TAG_app_preference_file">by.pavluchkov.fuel_balance.PREFERENCE_FILE_SETTINGS</string>
-    <string name="TAG_fuel_norma_summer">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_SUMMER</string>
-    <string name="TAG_fuel_norma_winter">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_WINTER</string>
-    <string name="TAG_frequent_technological_settings">by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_SETTINGS
+    <string name="TAG_app_preference_file" translatable="false">by.pavluchkov.fuel_balance.PREFERENCE_FILE_SETTINGS
     </string>
-    <string name="TAG_trassa_settings">by.pavluchkov.fuel_balance.TRASSA_SETTINGS</string>
-    <string name="TAG_previous_main">by.pavluchkov.fuel_balance.PREVIOUS_MAIN</string>
-    <string name="TAG_current_main">by.pavluchkov.fuel_balance.CURRENT_MAIN</string>
-    <string name="TAG_frequent_technological_main">by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_MAIN</string>
-    <string name="TAG_trassa_main">by.pavluchkov.fuel_balance.TRASSA_MAIN</string>
-    <string name="TAG_time_of_year">by.pavluchkov.fuel_balance.TIMEOFYEAR</string>
+    <string name="TAG_fuel_norma_summer" translatable="false">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_SUMMER
+    </string>
+    <string name="TAG_fuel_norma_winter" translatable="false">by.pavluchkov.fuel_balance.FUEL.CONSUMPTION_WINTER
+    </string>
+    <string name="TAG_frequent_technological_settings" translatable="false">
+        by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_SETTINGS
+    </string>
+    <string name="TAG_trassa_settings" translatable="false">by.pavluchkov.fuel_balance.TRASSA_SETTINGS</string>
+    <string name="TAG_previous_main" translatable="false">by.pavluchkov.fuel_balance.PREVIOUS_MAIN</string>
+    <string name="TAG_current_main" translatable="false">by.pavluchkov.fuel_balance.CURRENT_MAIN</string>
+    <string name="TAG_frequent_technological_main" translatable="false">
+        by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_MAIN
+    </string>
+    <string name="TAG_trassa_main" translatable="false">by.pavluchkov.fuel_balance.TRASSA_MAIN</string>
+    <string name="TAG_time_of_year" translatable="false">by.pavluchkov.fuel_balance.TIMEOFYEAR</string>
 
     <string name="string_fuel_norma">Норма топлива, л:</string>
     <string name="string_hint_summer">Летняя</string>
@@ -44,10 +48,12 @@
     <string name="string_trassa_settings">Трасса (% от нормы):</string>
 
     <!--default value-->
-    <string name="string_frequentTechnological_settings_default_value">10</string>
-    <string name="string_trassa_settings_default_value">3</string>
+    <string name="string_frequentTechnological_settings_default_value" translatable="false">10</string>
+    <string name="string_trassa_settings_default_value" translatable="false">3</string>
 
     <!--error messages-->
 
     <string name="string_message_1">Слишком большое значение !</string>
+    <string name="menu_gallery">Галерея</string>
+    <string name="menu_home">Дом</string>
 </resources>
