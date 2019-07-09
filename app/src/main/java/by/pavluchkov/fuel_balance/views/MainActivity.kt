@@ -204,6 +204,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onDestroy()
     }
 
+    override fun onStart() {
+        Timer().schedule(600) {
+            setResult(mPresenter.getResult(getUserData(), mPresenter.loadSettingsData()))
+        }
+        super.onStart()
+    }
+
     private fun setEditTextListener(editText: EditText) {
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
