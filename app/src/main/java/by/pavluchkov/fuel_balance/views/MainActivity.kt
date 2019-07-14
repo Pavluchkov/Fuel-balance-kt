@@ -33,7 +33,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val mPresenter = MainScreenPresenter()
 
     override fun setLoadUserData(data: MainData) {
-        editText_previous_main.setText(data.current.toString())
+        editText_previous_main.setText(
+            when (data.current.toString()) {
+                "0" -> ""
+                else -> data.current.toString()
+            }
+        )
 
         when (data.timeOfYear) {
             TimeOfYear.SUMMER -> radioButton_summer_main.isChecked = true

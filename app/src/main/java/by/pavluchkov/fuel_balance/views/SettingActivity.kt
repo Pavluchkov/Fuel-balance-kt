@@ -24,8 +24,18 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
                 else -> data.winterNorma.toString()
             }
         )
-        editText_frequent_technological_settings.setText(data.frequentTechnological.toString())
-        editText_trassa_settings.setText(data.trassa.toString())
+        editText_frequent_technological_settings.setText(
+            when (data.frequentTechnological.toString()) {
+                "0" -> getString(R.string.string_frequentTechnological_settings_default_value)
+                else -> data.frequentTechnological.toString()
+            }
+        )
+        editText_trassa_settings.setText(
+            when (data.trassa.toString()) {
+                "0" -> getString(R.string.string_trassa_settings_default_value)
+                else -> data.trassa.toString()
+            }
+        )
     }
 
     override fun getUserData(): SettingsData {
@@ -40,12 +50,12 @@ class SettingActivity : AppCompatActivity(), SettingsScreenView {
         }
 
         val frequentTechnological = when (editText_frequent_technological_settings.text.toString()) {
-            "" -> getString(R.string.string_frequentTechnological_settings_default_value).toInt()
+            "" -> 0
             else -> editText_frequent_technological_settings.text.toString().toInt()
         }
 
         val trassa = when (editText_trassa_settings.text.toString()) {
-            "" -> getString(R.string.string_trassa_settings_default_value).toInt()
+            "" -> 0
             else -> editText_trassa_settings.text.toString().toInt()
         }
 
