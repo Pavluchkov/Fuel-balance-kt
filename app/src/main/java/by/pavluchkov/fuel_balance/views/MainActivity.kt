@@ -1,5 +1,6 @@
 package by.pavluchkov.fuel_balance.views
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -17,6 +18,7 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.Toast
 import by.pavluchkov.fuel_balance.BuildConfig
 import by.pavluchkov.fuel_balance.R
 import by.pavluchkov.fuel_balance.enums.TimeOfYear
@@ -193,7 +195,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent.createChooser(intent, getString(R.string.email_app_chooserTitle)))
 
             }
+            R.id.nav_rate -> {
+                launchMarket()
+            }
         }
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
@@ -214,6 +220,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             setResult(mPresenter.getResult(getUserData(), mPresenter.loadSettingsData()))
         }
         super.onStart()
+    }
+
+    private fun launchMarket() {
+        val uri = Uri.parse("market://details?id=$packageName")
+        val myAppLinkToMarket = Intent(Intent.ACTION_VIEW, uri)
+
+        try {
+            startActivity(myAppLinkToMarket)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, getString(R.string.string_app_not_found_in_market), Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setEditTextListener(editText: EditText) {
