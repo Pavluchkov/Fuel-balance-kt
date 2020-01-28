@@ -30,7 +30,8 @@ import kotlinx.android.synthetic.main.content_main.*
 import java.util.*
 import kotlin.concurrent.schedule
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainScreenView {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    MainScreenView {
 
     private val mPresenter = MainScreenPresenter()
 
@@ -69,17 +70,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             else -> editText_frequent_technological_main.text.toString().toInt()
         }
 
-        val trassa = when (editText_trassa_main.text.toString()) {
-            "" -> 0
-            else -> editText_trassa_main.text.toString().toInt()
-        }
-
         val timeOfYear = when (radioButton_summer_main.isChecked) {
             true -> TimeOfYear.SUMMER
             else -> TimeOfYear.WINTER
         }
 
-        return MainData(previous, current, frequentTechnological, trassa, timeOfYear)
+        return MainData(previous, current, frequentTechnological, timeOfYear)
     }
 
     override fun showMessage(resId: Int) {
@@ -118,7 +114,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setEditTextListener(editText_previous_main)
         setEditTextListener(editText_current_main)
         setEditTextListener(editText_frequent_technological_main)
-        setEditTextListener(editText_trassa_main)
 
         radioGroup_main.setOnCheckedChangeListener { _, _ ->
             setResult(
@@ -184,7 +179,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 shareMessage =
                     shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n"
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
-                startActivity(Intent.createChooser(shareIntent, getString(R.string.string_share_app_chooser_title)))
+                startActivity(
+                    Intent.createChooser(
+                        shareIntent,
+                        getString(R.string.string_share_app_chooser_title)
+                    )
+                )
 
             }
             R.id.nav_send -> {
@@ -192,7 +192,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 //intent.setType("message/rfc822");
                 intent.data = Uri.parse("mailto:" + getString(R.string.email_app_address))
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_app_subject))
-                startActivity(Intent.createChooser(intent, getString(R.string.email_app_chooserTitle)))
+                startActivity(
+                    Intent.createChooser(
+                        intent,
+                        getString(R.string.email_app_chooserTitle)
+                    )
+                )
 
             }
             R.id.nav_rate -> {
@@ -229,7 +234,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         try {
             startActivity(myAppLinkToMarket)
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, getString(R.string.string_app_not_found_in_market), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                getString(R.string.string_app_not_found_in_market),
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
@@ -253,7 +262,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     editText.setSelection(editTextValue.length)
                     editText.setBackgroundColor(Color.RED)
                     Timer().schedule(200) {
-                        editText.setBackgroundColor(ContextCompat.getColor(editText.context, R.color.colorBackground))
+                        editText.setBackgroundColor(
+                            ContextCompat.getColor(
+                                editText.context,
+                                R.color.colorBackground
+                            )
+                        )
                     }
                 }
                 setResult(mPresenter.getResult(getUserData(), mPresenter.loadSettingsData()))

@@ -38,20 +38,19 @@
     <string name="TAG_frequent_technological_main">
         by.pavluchkov.fuel_balance.FREQUENT_TECHNOLOGICAL_MAIN
     </string>
-    <string name="TAG_trassa_main">by.pavluchkov.fuel_balance.TRASSA_MAIN</string>
     <string name="TAG_time_of_year">by.pavluchkov.fuel_balance.TIMEOFYEAR</string>
 
     <string name="string_fuel_norma">Норма топлива, л:</string>
     <string name="string_hint_summer">Летняя</string>
     <string name="string_hint_winter">Зимняя</string>
-    <string name="string_frequent_technological_settings">Частые технологические (% от нормы):</string>
-    <string name="string_trassa_settings">Трасса (% от нормы):</string>
+    <string name="string_frequent_technological_settings">Частые технологические (+% от нормы):</string>
+    <string name="string_trassa_settings">Трасса и тер-я завода(-% от нормы):</string>
     <string name="string_spidometr_hint">показания спидометра</string>
     <string name="string_km_hint">километры</string>
 
     <!--default value-->
     <string name="string_frequentTechnological_settings_default_value">10</string>
-    <string name="string_trassa_settings_default_value">3</string>
+    <string name="string_trassa_settings_default_value">1</string>
 
     <!--error messages-->
 

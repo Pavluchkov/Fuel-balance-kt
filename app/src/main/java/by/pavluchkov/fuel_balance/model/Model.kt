@@ -19,8 +19,10 @@ class Model : Imodel {
         with(sharedPreferences.edit()) {
             putInt(getStringFromRes(R.string.TAG_previous_main), data.previous)
             putInt(getStringFromRes(R.string.TAG_current_main), data.current)
-            putInt(getStringFromRes(R.string.TAG_frequent_technological_main), data.frequentTechnological)
-            putInt(getStringFromRes(R.string.TAG_trassa_main), data.trassa)
+            putInt(
+                getStringFromRes(R.string.TAG_frequent_technological_main),
+                data.frequentTechnological
+            )
             putInt(getStringFromRes(R.string.TAG_time_of_year), data.timeOfYear.ordinal)
             apply()
         }
@@ -32,35 +34,44 @@ class Model : Imodel {
         with(sharedPreferences.edit()) {
             putFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), data.summerNorma)
             putFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), data.winterNorma)
-            putInt(getStringFromRes(R.string.TAG_frequent_technological_settings), data.frequentTechnological)
+            putInt(
+                getStringFromRes(R.string.TAG_frequent_technological_settings),
+                data.frequentTechnological
+            )
             putInt(getStringFromRes(R.string.TAG_trassa_settings), data.trassa)
             apply()
         }
     }
 
     override fun loadMainData(): MainData {
-        if (sharedPreferences == null) return MainData(0, 0, 0, 0, TimeOfYear.SUMMER)
+        if (sharedPreferences == null) return MainData(0, 0, 0, TimeOfYear.SUMMER)
 
         val previous = sharedPreferences.getInt(getStringFromRes(R.string.TAG_previous_main), 0)
         val current = sharedPreferences.getInt(getStringFromRes(R.string.TAG_current_main), 0)
-        val frequentTechnology = sharedPreferences.getInt(getStringFromRes(R.string.TAG_frequent_technological_main), 0)
-        val trassa = sharedPreferences.getInt(getStringFromRes(R.string.TAG_trassa_main), 0)
-        val timeOfYearOrdinal = sharedPreferences.getInt(getStringFromRes(R.string.TAG_time_of_year), 0)
+        val frequentTechnology =
+            sharedPreferences.getInt(getStringFromRes(R.string.TAG_frequent_technological_main), 0)
+        val timeOfYearOrdinal =
+            sharedPreferences.getInt(getStringFromRes(R.string.TAG_time_of_year), 0)
         val timeOfYear = when (timeOfYearOrdinal) {
             TimeOfYear.SUMMER.ordinal -> TimeOfYear.SUMMER
             else -> TimeOfYear.WINTER
         }
 
-        return MainData(previous, current, frequentTechnology, trassa, timeOfYear)
+        return MainData(previous, current, frequentTechnology, timeOfYear)
     }
 
     override fun loadSettingsData(): SettingsData {
         if (sharedPreferences == null) return SettingsData(0f, 0f, 0, 0)
 
-        val summerNorma = sharedPreferences.getFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), 0f)
-        val winterNorma = sharedPreferences.getFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), 0f)
+        val summerNorma =
+            sharedPreferences.getFloat(getStringFromRes(R.string.TAG_fuel_norma_summer), 0f)
+        val winterNorma =
+            sharedPreferences.getFloat(getStringFromRes(R.string.TAG_fuel_norma_winter), 0f)
         val frequencyTechnology =
-            sharedPreferences.getInt(getStringFromRes(R.string.TAG_frequent_technological_settings), 0)
+            sharedPreferences.getInt(
+                getStringFromRes(R.string.TAG_frequent_technological_settings),
+                0
+            )
         val trassa = sharedPreferences.getInt(getStringFromRes(R.string.TAG_trassa_settings), 0)
 
         return SettingsData(summerNorma, winterNorma, frequencyTechnology, trassa)

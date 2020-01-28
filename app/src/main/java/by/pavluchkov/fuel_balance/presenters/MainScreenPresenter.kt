@@ -22,7 +22,8 @@ class MainScreenPresenter {
 
     fun saveUserData(mainScreenData: MainData) {
 
-        if (mainScreenData.current < mainScreenData.previous) mainScreenData.current = mainScreenData.previous
+        if (mainScreenData.current < mainScreenData.previous) mainScreenData.current =
+            mainScreenData.previous
 
         mModel.saveData(mainScreenData)
     }
@@ -37,9 +38,8 @@ class MainScreenPresenter {
 
     fun checkValue(mainScreenData: MainData): Boolean {
         val kmPassed = mainScreenData.current - mainScreenData.previous
-        val freqPlusTrassa = mainScreenData.frequentTechnological + mainScreenData.trassa
 
-        if ((freqPlusTrassa > kmPassed) && (kmPassed > 0)) {
+        if ((mainScreenData.frequentTechnological > kmPassed) && (kmPassed > 0)) {
             return false
         }
 
@@ -63,10 +63,10 @@ class MainScreenPresenter {
         val trassaNorma = currentNorma - (settingsData.trassa * currentNorma / 100)
 
         val spentFreqTech = mainScreenData.frequentTechnological * freqTechNorma / 100
-        val spentTrassa = mainScreenData.trassa * trassaNorma / 100
+        //val spentTrassa = mainScreenData.trassa * trassaNorma / 100
 
         val result =
-            ((kmPassed - mainScreenData.frequentTechnological - mainScreenData.trassa) * currentNorma / 100) + spentFreqTech + spentTrassa
+            ((kmPassed - mainScreenData.frequentTechnological) * trassaNorma / 100) + spentFreqTech
 
         val roundResult = (result * 1000).roundToInt() / 1000.toFloat()
 

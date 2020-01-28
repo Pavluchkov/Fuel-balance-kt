@@ -1,306 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/app_bar_main"
-        tools:context=".views.MainActivity">
+        tools:context=".views.MainActivity"
+        tools:showIn="@layout/app_bar_main">
 
     <TextView
             android:id="@+id/textView_previous_main"
-            android:text="@string/string_previous"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:singleLine="true"
             android:ellipsize="middle"
             android:maxLines="2"
-            app:layout_constraintTop_toTopOf="@+id/guideline_5_procent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:singleLine="true"
+            android:text="@string/string_previous"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"/>
+            app:layout_constraintTop_toTopOf="@+id/guideline_5_procent" />
+
     <TextView
             android:id="@+id/textView_current_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="middle"
+            android:maxLines="2"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:singleLine="true"
             android:text="@string/string_current"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:textAlignment="textEnd"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:singleLine="true"
-            android:ellipsize="middle"
-            android:maxLines="2"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_15_procent"/>
-    <TextView
-            android:id="@+id/textView_trassa_main"
-            android:text="@string/string_trassa"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:singleLine="true"
-            android:ellipsize="middle"
-            android:maxLines="2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_35_procent"/>
+            app:layout_constraintTop_toTopOf="@+id/guideline_15_procent" />
+
     <TextView
             android:id="@+id/textView_frequent_technological_main"
-            android:text="@string/string_frequent_technological"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:singleLine="true"
+            android:layout_marginEnd="8dp"
             android:ellipsize="middle"
             android:maxLines="2"
-            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:singleLine="true"
+            android:text="@string/string_frequent_technological"
+            android:textAlignment="textEnd"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_25_procent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_25_procent" />
+
     <EditText
             android:id="@+id/editText_previous_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:textColor="@color/colorMainText"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="@string/string_spidometr_hint"
-            android:singleLine="true"
             android:ellipsize="end"
+            android:ems="10"
+            android:hint="@string/string_spidometr_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@color/colorMainText"
             android:textColorHint="@color/colorHint"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_previous_main"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_previous_main" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="@+id/textView_previous_main"/>
+            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
+            app:layout_constraintTop_toTopOf="@+id/textView_previous_main" />
+
     <EditText
             android:id="@+id/editText_current_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:textColor="@color/colorMainText"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="@string/string_spidometr_hint"
-            android:singleLine="true"
             android:ellipsize="end"
+            android:ems="10"
+            android:hint="@string/string_spidometr_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@color/colorMainText"
             android:textColorHint="@color/colorHint"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/textView_current_main"
-            app:layout_constraintTop_toTopOf="@+id/textView_current_main"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
+            app:layout_constraintTop_toTopOf="@+id/textView_current_main" />
+
     <EditText
             android:id="@+id/editText_frequent_technological_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:textColor="@color/colorMainText"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:ems="10"
             android:hint="@string/string_km_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textColor="@color/colorMainText"
             android:textColorHint="@color/colorHint"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/textView_frequent_technological_main"
-            app:layout_constraintTop_toTopOf="@+id/textView_frequent_technological_main"/>
-    <EditText
-            android:id="@+id/editText_trassa_main"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:textColor="@color/colorMainText"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:hint="@string/string_km_hint"
-            android:textColorHint="@color/colorHint"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_trassa_main"
-            app:layout_constraintTop_toTopOf="@+id/textView_trassa_main"/>
+            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
+            app:layout_constraintTop_toTopOf="@+id/textView_frequent_technological_main" />
+
     <android.support.constraint.Guideline
             android:id="@+id/guideline_5_procent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.05"/>
+            app:layout_constraintGuide_percent="0.05" />
+
     <android.support.constraint.Guideline
             android:id="@+id/guideline_50_procent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5"/>
+            app:layout_constraintGuide_percent="0.5" />
+
     <TextView
             android:id="@+id/textView_timeOfTheYear_main"
-            android:text="@string/string_time_of_the_year"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textAlignment="textEnd"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:singleLine="true"
+            android:layout_marginEnd="8dp"
             android:ellipsize="middle"
             android:maxLines="2"
-            app:layout_constraintStart_toStartOf="parent"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/string_time_of_the_year"
+            android:textAlignment="textEnd"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintTop_toTopOf="@+id/guideline_45_procent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_35_procent" />
+
     <RadioGroup
             android:id="@+id/radioGroup_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/textView_timeOfTheYear_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
             app:layout_constraintTop_toTopOf="@+id/textView_timeOfTheYear_main">
+
         <RadioButton
                 android:id="@+id/radioButton_winter_main"
-                android:text="@string/string_winter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:textColor="@color/colorMainText"/>
+                android:text="@string/string_winter"
+                android:textColor="@color/colorMainText" />
+
         <RadioButton
                 android:id="@+id/radioButton_summer_main"
-                android:text="@string/string_summer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/colorMainText"/>
+                android:text="@string/string_summer"
+                android:textColor="@color/colorMainText" />
     </RadioGroup>
+
     <TextView
             android:id="@+id/textView_passed_main"
-            android:text="@string/string_passed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:singleLine="true"
+            android:layout_marginEnd="8dp"
             android:ellipsize="middle"
             android:maxLines="2"
-            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:singleLine="true"
+            android:text="@string/string_passed"
+            android:textAlignment="textEnd"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_55_procent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_45_procent" />
+
     <TextView
             android:id="@+id/textView_passedResult_main"
-            android:text="@string/string_passed_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorMainText"
-            android:padding="8dp"
-            android:textAlignment="textStart"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="8dp"
+            android:text="@string/string_passed_result"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorMainText"
             app:layout_constraintBottom_toBottomOf="@+id/textView_passed_main"
-            app:layout_constraintTop_toTopOf="@+id/textView_passed_main"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
+            app:layout_constraintTop_toTopOf="@+id/textView_passed_main" />
+
     <TextView
             android:id="@+id/textView_spent_main"
-            android:text="@string/string_spent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:singleLine="true"
+            android:layout_marginEnd="8dp"
             android:ellipsize="middle"
             android:maxLines="2"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:singleLine="true"
+            android:text="@string/string_spent"
+            android:textAlignment="textEnd"
             app:layout_constraintEnd_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/textView_passed_main"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_passed_main" />
+
     <TextView
             android:id="@+id/textView_spentResult_main"
-            android:text="@string/string_spent_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorMainText"
-            android:textAlignment="center"
-            android:background="@drawable/background_edittext"
-            android:padding="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/background_edittext"
+            android:padding="8dp"
+            android:text="@string/string_spent_result"
+            android:textAlignment="center"
+            android:textColor="@color/colorMainText"
             app:layout_constraintBottom_toBottomOf="@+id/textView_spent_main"
-            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintTop_toTopOf="@+id/textView_spent_main"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline_50_procent"
+            app:layout_constraintTop_toTopOf="@+id/textView_spent_main" />
+
     <TextView
             android:id="@+id/textView_currentVersion_main"
-            tools:text="v.1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            tools:text="v.1.0" />
 
     <android.support.constraint.Guideline
             android:id="@+id/guideline_15_procent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15"/>
+            app:layout_constraintGuide_percent="0.15" />
+
     <android.support.constraint.Guideline
             android:id="@+id/guideline_25_procent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25"/>
+            app:layout_constraintGuide_percent="0.25" />
+
     <android.support.constraint.Guideline
             android:id="@+id/guideline_35_procent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35"/>
+            app:layout_constraintGuide_percent="0.35" />
+
     <android.support.constraint.Guideline
             android:id="@+id/guideline_45_procent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45"/>
-    <android.support.constraint.Guideline
-            android:id="@+id/guideline_55_procent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55"/>
+            app:layout_constraintGuide_percent="0.45" />
 
 </android.support.constraint.ConstraintLayout>
