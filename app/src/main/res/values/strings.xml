@@ -65,4 +65,6 @@
     <string name="string_share_app_message">Разрешите поделиться с вами этим приложением:</string>
     <string name="string_rate_app">Оценить приложение</string>
     <string name="string_app_not_found_in_market">Приложение не найдено!</string>
+    <string name="default_notification_channel_id">by.pavluchkov.fuel_balance</string>
+    <string name="fcm_message">Важное сообщение</string>
 </resources>
