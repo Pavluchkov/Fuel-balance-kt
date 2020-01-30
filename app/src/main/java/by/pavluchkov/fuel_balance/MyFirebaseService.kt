@@ -5,11 +5,9 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.media.RingtoneManager
 import android.os.Build
 import android.support.v4.app.NotificationCompat
-import android.util.Log
 import by.pavluchkov.fuel_balance.views.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -17,7 +15,7 @@ import com.google.firebase.messaging.RemoteMessage
 class MyFirebaseService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
-        Log.d("TAG", "Refreshed token: $token")
+        //Log.d("TAG", "Refreshed token: $token")
 
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
@@ -48,10 +46,11 @@ class MyFirebaseService : FirebaseMessagingService() {
         val channelId = getString(R.string.default_notification_channel_id)
         val defaultSaundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
+            //.setSmallIcon(R.drawable.ic_push_notifications)
+            //.setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_push_notifications))
             //.setContentTitle(getString(R.string.fcm_message))
             .setContentText(messageBody)
+            //.setStyle(NotificationCompat.BigTextStyle().bigText(messageBody))
             .setAutoCancel(true)
             .setSound(defaultSaundUri)
             .setContentIntent(pendingIntent)

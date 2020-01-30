@@ -7,4 +7,5 @@
     <color name="colorMainText">#757a80</color>
     <color name="colorBlack">#000000</color>
     <color name="colorHint">#4d4d4d</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>
