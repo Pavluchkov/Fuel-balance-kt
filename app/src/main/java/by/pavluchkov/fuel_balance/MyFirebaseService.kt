@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
-import android.support.v4.app.NotificationCompat
+import androidx.core.app.NotificationCompat
 import by.pavluchkov.fuel_balance.views.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -23,10 +23,10 @@ class MyFirebaseService : FirebaseMessagingService() {
         //sendRegistrationToServer(token)
     }
 
-    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        remoteMessage?.data?.isNotEmpty()?.let {
+        remoteMessage.data.isNotEmpty().let {
 
             if (!remoteMessage.data.isNullOrEmpty()) {
                 val msg: String = remoteMessage.data["message"].toString()
@@ -34,7 +34,7 @@ class MyFirebaseService : FirebaseMessagingService() {
             }
         }
 
-        remoteMessage?.notification?.let {
+        remoteMessage.notification?.let {
             sendNotification(remoteMessage.notification?.body)
         }
     }

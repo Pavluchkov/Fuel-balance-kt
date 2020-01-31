@@ -1,7 +1,7 @@
 package by.pavluchkov.fuel_balance.views
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import by.pavluchkov.fuel_balance.R
 import by.pavluchkov.fuel_balance.interfaces.SettingsScreenView
 import by.pavluchkov.fuel_balance.presenters.SettingsScreenPresenter
